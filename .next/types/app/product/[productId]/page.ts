@@ -1,4 +1,4 @@
-// File: /Users/perrycheung/Documents/PROJECT/2024/perry-eshop-nextjs/src/app/product/[productId]/page.tsx
+// File: /Users/perrycheung/Documents/PROJECT/2024/perry-eshop-next-js/src/app/product/[productId]/page.tsx
 import * as entry from '../../../../../src/app/product/[productId]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
