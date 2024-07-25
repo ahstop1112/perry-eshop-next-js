@@ -2,7 +2,6 @@ import Container from '@/app/components/Container'
 import { products } from '@/utils/product'
 import ProductDetails from './ProductDetails' 
 import ListRating from './ListRating'
-    
 interface IPrams{
     productId?: string
 }
