@@ -2,7 +2,6 @@ import Container from './components/Container'
 import HomeBanner from './components/HomeBanner'
 import ProductCard from './components/products/ProductCard'
 import { products } from '../utils/product'
-import { truncateText } from '../utils/truncateText'
 
 export default function Home() {
   return (
@@ -19,7 +18,7 @@ export default function Home() {
           gap-8"
         >
           {products && products.map((product: any) => 
-            <div>
+            <div key={product?.id}>
                 {<ProductCard data={product} />}
             </div>)}
         </div>
