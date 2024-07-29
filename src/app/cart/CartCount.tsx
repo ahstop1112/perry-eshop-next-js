@@ -1,5 +1,4 @@
 'use client'
-
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/hooks/useCart'
 import { CiShoppingCart } from 'react-icons/ci'
