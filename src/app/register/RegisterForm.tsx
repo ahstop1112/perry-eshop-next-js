@@ -1,7 +1,11 @@
 'user client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { FilledValue, SubmitHandler, useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
+import { signIn } from 'next-auth/react'
 import Button from '@/app/components/Button'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import Heading from '../components/Heading'
@@ -17,11 +21,35 @@ const RegisterForm = () => {
                 password: ''
             }
         })
+
+    const router = userRouter()
     
     const onSubmit:SubmitHandler<FilledValue> = (data) => {
         setIsLoading(true)
         console.log(data)
         
+        axios.post('/api/register', data).then(() => {
+            toast.success('Account created')
+
+            signIn('credentials', {
+                email: data.email,
+                password: data.password,
+                redirect: false
+            }).then((callback) => {
+                if(callback?.ok){
+                    router.push('/cart')
+                    router.refresh(
+                        toast.success('Logged In')
+                    )
+                }
+            })
+
+            if (callback?.error){
+                throw error('Callback error')
+            }
+        }).catch(() => toast.error("Something went wrong")).finally(() => {
+            setLoading(false)
+        })
     }
 
     return (

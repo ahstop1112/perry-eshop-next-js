@@ -12,7 +12,6 @@ const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } =
         useForm<FieldValues>({
             defaultValues:{
-                name: '',
                 email: '',
                 password: ''
             }
@@ -26,17 +25,9 @@ const LoginForm = () => {
 
     return (
         <>
-            <Heading title="Sign up for E-shop" />
+            <Heading title="Login for E-shop" />
             <Button outline label="Sign up with Google" icon={AiOutlineGoogle} onClick={() => {}} />
             <hr className="bg-slate-300 w-full h-px"/>
-            <Input 
-                id="name"
-                label="Name"
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
             <Input 
                 id="email"
                 label="Email"
@@ -55,7 +46,7 @@ const LoginForm = () => {
                 required
             />
             <Button label={isLoading ? "Loading" : "Login"}onClick={handleSubmit(onSubmit)} />
-            <p className="text-sm mb-4 ">Already have an account? <Link className="underline" href ={"/login"} >Log in</Link></p>
+            <p className="text-sm mb-4 ">Do not have an account? <Link className="underline" href ={"/register"} >Sign up</Link></p>
         </>
     );
 }
